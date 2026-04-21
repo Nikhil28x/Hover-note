@@ -1,0 +1,34 @@
+# Dependencies
+node_modules
+
+# Electron build output
+dist
+out
+release
+
+# Environment / local config
+.env
+.env.local
+.env.*.local
+
+# Editor
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# macOS
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Planning docs — internal only, not part of source
+PRD.md
+PROMPT.md

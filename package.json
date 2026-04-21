@@ -1,0 +1,36 @@
+{
+  "name": "hover-note",
+  "version": "0.1.0",
+  "description": "Always-on-top floating scratch-pad",
+  "main": "main.js",
+  "license": "MIT",
+  "author": "Nikhil",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.hovernote.app",
+    "productName": "Hover Note",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "index.html"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
