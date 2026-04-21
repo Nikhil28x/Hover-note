@@ -53,6 +53,9 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  // Enable launch at login by default (no-op if already set)
+  app.setLoginItemSettings({ openAtLogin: true })
+
   createWindow()
 
   const shortcut = process.platform === 'darwin' ? 'Command+Shift+N' : 'Control+Shift+N'
@@ -89,4 +92,13 @@ ipcMain.on('quit-app', () => {
 ipcMain.handle('copy-text', (_event, text) => {
   if (typeof text !== 'string') return
   clipboard.writeText(text.slice(0, MAX_CLIPBOARD_CHARS))
+})
+
+ipcMain.handle('get-launch-at-login', () => {
+  return app.getLoginItemSettings().openAtLogin
+})
+
+ipcMain.handle('set-launch-at-login', (_event, enabled) => {
+  if (typeof enabled !== 'boolean') return
+  app.setLoginItemSettings({ openAtLogin: enabled })
 })

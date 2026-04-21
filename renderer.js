@@ -25,3 +25,20 @@ document.getElementById('opacitySlider').addEventListener('input', (e) => {
   const alpha = (Number(e.target.value) / 100).toFixed(2)
   document.documentElement.style.setProperty('--bg-alpha', alpha)
 })
+
+// ── Launch at login toggle ──
+const launchBtn = document.getElementById('launchBtn')
+
+async function syncLaunchBtn() {
+  const enabled = await api?.getLaunchAtLogin()
+  launchBtn.classList.toggle('active', !!enabled)
+  launchBtn.title = enabled ? 'Launch at login: ON' : 'Launch at login: OFF'
+}
+
+launchBtn.addEventListener('click', async () => {
+  const current = launchBtn.classList.contains('active')
+  await api?.setLaunchAtLogin(!current)
+  syncLaunchBtn()
+})
+
+syncLaunchBtn()

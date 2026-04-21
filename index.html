@@ -103,6 +103,21 @@
       .btn-close { font-size: 12px; padding: 2px 6px; }
       .btn-close:hover { background: rgba(255,60,60,0.22); color: #ff6b6b; }
 
+      /* ── Launch-at-login toggle ── */
+      .btn-launch {
+        font-size: 9px;
+        padding: 2px 5px;
+        border-radius: 4px;
+        opacity: 0.45;
+        transition: opacity 0.12s, background 0.12s, color 0.12s;
+      }
+      .btn-launch:hover { opacity: 1; }
+      .btn-launch.active {
+        opacity: 1;
+        color: #6ee7b7;
+        background: rgba(110,231,183,0.1);
+      }
+
       /* ── Textarea ── */
       .notepad {
         flex: 1;
@@ -148,6 +163,7 @@
             min="30" max="95" value="85"
             title="Opacity"
           />
+          <button class="btn btn-launch" id="launchBtn" title="Launch at login">⚡</button>
           <button class="btn" id="copyBtn" title="Copy note">COPY</button>
           <button class="btn btn-close" id="closeBtn" title="Close">✕</button>
         </div>
